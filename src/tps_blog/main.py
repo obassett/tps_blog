@@ -6,8 +6,13 @@ from fastapi.requests import Request
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 
+# TODO: Convert the paths to async paths using aiofiles and aiopath
+
 static_path = Path(__file__).parent.parent / "static"
 templates_path = Path(__file__).parent.parent / "templates"
+
+# TODO: Add pages directory to contain markdown content for pages - so I don't have to write html
+# The pages directory should sit under src already and contains already has a few markdown files.
 
 app = FastAPI()
 
@@ -16,35 +21,12 @@ app.mount("/static", StaticFiles(directory=static_path), name="static")
 templates = Jinja2Templates(directory=templates_path)
 
 
-@app.get("/")
-async def root():
-    response = HTMLResponse(
-        content=f"""
-      <!doctype html>
-      <HTML lang="en">
-      <head>
-          <meta charset="utf-8">
-          <title>Hello World!</title>
-      </head>
-      <body>
-          <h1>Hello World</h1>
-      </body>
-      </HTML>
-      """
-    )
-    return response
-
-
-@app.get("/testjinja", response_class=HTMLResponse)
-async def test_jinja(request: Request):
-    content = "Some Content"
-    items = ["YC", "Oliver", "Kaito Honda", "Lin", "大山"]
+@app.get("/", response_class=HTMLResponse)
+async def root(request: Request):
+    content = "Hello World"
     return templates.TemplateResponse(
-        "base.html",
-        {"request": request, "items": items, "content": f"This is some {content}"},
+        "base.html.j2", {"request": request, "content": content}
     )
 
 
-@app.get("/articles/{article_id}")
-async def get_article(article_id: int):
-    return {"article_id": article_id}
+# TODO: Add a /pages/<page_name> route to serve pages from the pages directory
