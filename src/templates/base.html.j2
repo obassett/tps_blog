@@ -17,7 +17,7 @@
     </div>
     <!-- Navbar Starts Here -->
     {% block navbar%}
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    {# <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
             <a class="navbar-brand" href="/">
                 <img src='/static/tps-logo.svg' alt='TPS Logo' width='100' height='100'>
@@ -29,13 +29,13 @@
                 </li>
             </ul>
         </div>
-    </nav>
+    </nav> #}
     {% endblock navbar %}
     <!-- Navbar Ends Here -->
     <main class="container-fluid"> 
         <!-- Main Content Starts Here -->
         {% block page  %} 
-        <div class="container-lg">
+        {# <div class="container-lg">
             <div class="row">
                 <div class="col"></div>
                 <div class="col-md-10">
@@ -44,7 +44,7 @@
                     {{ content }}
                 </div>
                 <div class="col"></div>
-        </div>
+        </div> #}
         {% endblock page %}
         <!-- Main Content Ends Here -->
     </main>

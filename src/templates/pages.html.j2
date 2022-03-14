@@ -1,0 +1,18 @@
+{% extends "base.html.j2" %}
+
+{% block navbar %}
+    {% include 'navbar.html.j2' %}
+{% endblock navbar %}
+
+{% block page  %} 
+    <div class="container-lg">
+        <div class="row">
+            <div class="col"></div>
+            <div class="col-md-10">
+                <!-- Replace the title below with a variable  -->
+                <h1>{{ page_title.title() }}</h1>
+                {{ content | safe }}
+            </div>
+            <div class="col"></div>
+    </div>
+{% endblock page %}
