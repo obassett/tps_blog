@@ -10,8 +10,8 @@
             <div class="col"></div>
             <div class="col-md-10">
                 <!-- Replace the title below with a variable  -->
-                <h1>{{ page_title.title() }}</h1>
-                {{ content | safe }}
+                <h1>{{ page_data.page_title.title() }}</h1>
+                {{ page_data.content | safe }}
             </div>
             <div class="col"></div>
     </div>

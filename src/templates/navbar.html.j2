@@ -8,7 +8,7 @@
             {# This is where we set the active page #}
                 <a class="nav-link active" href="/">Home</a>
             </li>
-            {% for nav_item in navbar_items %}
+            {% for nav_item in page_data.navbar_items %}
             <li class="nav-item">
             {# This is where we set the active page #}
                 <a class="nav-link" href="/pages/{{ nav_item }}">{{ nav_item.title() }}</a>
